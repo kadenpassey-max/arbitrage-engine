@@ -5,6 +5,115 @@ AWD premium) come from the loaded city profile, not from this file.
 
 ---
 
+## Client Mode — Default Scoring & Output
+
+Client mode is the default. Use it when sourcing a vehicle for a specific buyer.
+Switch to Dealer Mode only when explicitly requested.
+
+### Drive-out price formula
+
+```
+Drive-out = Bid + $1,500 (DealerKey service fee) + $750 (Manheim fee) + Transport
+```
+
+Transport from Manheim Nevada = $0 (standing arrangement).
+All other auction locations: use transport table below.
+
+### Local dealer comparison (always include in client mode output)
+
+```
+Est. UT retail     = MMR × brand markup% (from city profile)
+UT dealer drive-out = Est. UT retail + $599 (UT doc fee)
+Client savings      = UT dealer drive-out − DealerKey drive-out
+```
+
+A positive savings number is the client arbitrage — what they keep in their pocket
+vs. buying the equivalent vehicle off a Utah lot.
+
+### Value spread
+
+```
+Value spread = MMR − DealerKey drive-out
+```
+
+Positive = client is buying below wholesale market value. Negative = paying over MMR;
+only appropriate when condition, mileage, or feature set justifies it.
+
+| Spread | Signal |
+|---|---|
+| > $2,000 under MMR | Strong buy — flag as high value |
+| $0–$2,000 under MMR | Fair — on-market |
+| Negative (over MMR) | Flag — explain why it's still justified, or pass |
+
+### Recon in client mode — three tiers
+
+Do NOT calculate repair cost as the primary metric. Instead classify each item:
+
+**Functional blocker** — always flag, must disclose, affects whether client can use the car:
+- Battery degradation / failure
+- AC system failure (not just recharge — compressor/component failure)
+- Transmission issues
+- Engine issues
+- Structural damage
+- Safety system failures (airbag, ABS)
+- Any item that would require repair before the car is drivable or safe
+
+**FMV detractor** — note with estimated market value impact, not repair cost:
+- Significant body panel damage, major dents, missing trim
+- Prior paint (disclosed, but affects resale if client ever sells)
+- Heavy interior wear or damage
+- Significant wheel damage
+Use judgment: "This damage would likely reduce the car's market value by $X–$Y
+compared to a clean example."
+
+**Cosmetic note** — document but assign no financial weight:
+- Rock chips, light scratches, normal wear
+- Minor interior scuffs
+- Stone chips on leading edges
+
+### Client mode output format
+
+For each vehicle, output in this order:
+1. Vehicle ID (year / make / model / trim / miles / grade / VIN)
+2. MMR
+3. DealerKey drive-out price (bid + $2,250 + transport)
+4. UT dealer drive-out estimate + **client savings line**
+5. Value spread (MMR vs. drive-out)
+6. Functional blockers (if any) — prominent, before anything else
+7. FMV detractors (if any) — with estimated market value impact
+8. Cosmetic notes (brief)
+9. Confidence signal (grade, seller tier, miles)
+10. Recommended max bid
+
+---
+
+## Transport Cost Table (SLC as destination)
+
+Applies in both modes. Nevada column reflects standing client arrangement.
+
+| Auction location | Client mode | Dealer mode |
+|---|---|---|
+| Manheim Utah | $0–$100 | $0–$100 |
+| Manheim Nevada (Henderson) | **$0** | $250–$350 |
+| Manheim Phoenix | $350–$450 | $350–$450 |
+| Manheim Denver | $350–$450 | $350–$450 |
+| Manheim Seattle | $350–$450 | $350–$450 |
+| Manheim California (inland — El Monte, Fontana) | $400–$500 | $400–$500 |
+| Manheim Riverside | $450–$550 | $450–$550 |
+| Manheim Southern California (Studio City, etc.) | $450–$550 | $450–$550 |
+| Manheim Oceanside | $450–$550 | $450–$550 |
+| Manheim San Francisco Bay | $500–$650 | $500–$650 |
+| Manheim Dallas / Dallas-Fort Worth | $600–$800 | $600–$800 |
+| Manheim Houston / Texas | $700–$900 | $700–$900 |
+| Manheim Atlanta | $900–$1,100 | $900–$1,100 |
+
+When transport is a range, use midpoint for drive-out calculation and note the range.
+For dealer mode, use midpoint in bid math; flag high-end as worst-case scenario.
+
+---
+
+---
+
 ## Recon cost table (universal — confirmed from live auction data)
 
 | Condition item | Cost |
@@ -116,7 +225,7 @@ Cap: 97. Floor: 10.
 
 ---
 
-## Bid math formula (universal)
+## Dealer Mode — Bid Math Formula
 
 ```
 Est. Retail = MMR × (1 + Markup%) 

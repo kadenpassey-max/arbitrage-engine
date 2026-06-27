@@ -43,6 +43,23 @@ Once city is known:
 
 ---
 
+## Operating Mode
+
+**Client mode — DEFAULT.** Used when sourcing a vehicle for a specific buyer.
+- Recon flags functional blockers and FMV detractors only — repair cost is not the metric
+- No target gross, no flooring rate, no days-to-sell weighting
+- Output centers on drive-out price, local dealer comparison, and client savings
+- Drive-out = bid + $1,500 DK service fee + $750 Manheim fee + transport
+- Transport from Manheim Nevada: **$0** (standing arrangement — omit from drive-out)
+- See scoring-core.md "Client Mode" section for full output spec
+
+**Dealer mode — OPT-IN.** Full resale/flip analysis.
+- Triggered when user says: "dealer mode", "flip", "resale", "inventory buy", or "what should we stock"
+- Full Elite v4 scoring: GPD, confidence tiers, dual bid output, target gross
+- All dealer parameters below apply
+
+---
+
 ## Reference file routing
 
 | Task | Load these files |
@@ -88,11 +105,11 @@ Dual bid output — always required:
 
 ---
 
-## Dealer parameters (defaults — user-adjustable)
+## Dealer parameters (dealer mode only — user-adjustable)
 
 Target gross:         $3,500
 Flooring per day:     $35
-Transport:            $300
+Transport:            see transport table in scoring-core.md
 Auto-PASS threshold:  50% confidence
 A-tier threshold:     80% confidence
 C-tier threshold:     65% confidence

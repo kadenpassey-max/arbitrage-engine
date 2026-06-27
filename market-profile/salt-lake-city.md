@@ -40,6 +40,7 @@ Notes: Most thoroughly calibrated profile in the engine. Use as reference baseli
 | 10 | Full 3-row SUV | 26d | Family demand; size matters |
 
 **Extended turns:**
+- Popular FWD crossover (RAV4, CR-V, Tucson, etc.): 32–38d — priced right these sell; AWD equivalent moves 10–14d faster but FWD is not unmarketable
 - Mustang EcoBoost Premium (fastback): 24d — broad appeal but niche vs. trucks
 - GR Supra 3.0 manual: 30d — narrow demographic, premium buyer
 - BMW M2 < 20k mi: 33d — fast nationally, SLC has tech buyer pool but payment ceiling
@@ -49,7 +50,6 @@ Notes: Most thoroughly calibrated profile in the engine. Use as reference baseli
 
 **Avoid in SLC:**
 - Camaro / Challenger V8: 50d+ — flooded market, RWD winter penalty, discontinued
-- FWD-only crossover / sedan: 48d — buyers here always want AWD option
 - Canadian imports: auto-PASS (financing refusal, title stigma, $2,500 retail ceiling loss)
 
 ---
@@ -75,7 +75,7 @@ Notes: Most thoroughly calibrated profile in the engine. Use as reference baseli
 
 | Condition | Adjustment | Notes |
 |---|---|---|
-| AWD / 4WD drivetrain | +4% MMR | Year-round demand; non-negotiable for most buyers |
+| AWD / 4WD drivetrain | +4% MMR | Demand bonus for AWD/4WD units — FWD is scored neutral (no bonus, no penalty). In client-order mode, apply only if the client has specified AWD. |
 | Full 3-row SUV (Palisade, Telluride, GCL, Traverse, Durango) | +8% MMR | Large family size drives genuine demand |
 | Fold-flat 3rd row (Santa Fe XRT, Armada, Atlas) | +4% MMR | Occasional use — partial premium |
 | Minivan (Pacifica, Carnival, Sienna, Odyssey) | +8% MMR | Outsized LDS family demand |
@@ -136,13 +136,31 @@ This is baked into the base markup rates above.
 
 ## 8. Auction intelligence
 
-**Primary auction:** Manheim Nevada (Henderson, NV) — ~400 miles, $250–350 transport
+**Primary auction:** Manheim Nevada (Henderson, NV) — ~400 miles
 **Specialty sales:** NV Friday Specialty Sale, Thursdays (general)
 **Regional seller concentrations:** Hertz (large SW fleet), HMA OEM (specialty lane),
   LDS Church Fleet (Element/CPB), Sixt (European brand heavy)
 **Competition profile:** Moderate — specialty lane draws focused buyers but not as deep as
   Manheim California or Manheim Texas
-**Transport to SLC:** $250–350 depending on carrier
+
+### Transport to SLC by auction — client mode vs. dealer mode
+
+| Auction | Client mode | Dealer mode |
+|---|---|---|
+| Manheim Utah | $0–$100 | $0–$100 |
+| **Manheim Nevada** | **$0 (standing arrangement)** | $250–$350 |
+| Manheim Phoenix | $350–$450 | $350–$450 |
+| Manheim Denver | $350–$450 | $350–$450 |
+| Manheim Seattle | $350–$450 | $350–$450 |
+| Manheim California (inland) | $400–$500 | $400–$500 |
+| Manheim Riverside / So. Cal | $450–$550 | $450–$550 |
+| Manheim SF Bay / Oceanside | $500–$650 | $500–$650 |
+| Manheim Dallas / DFW | $600–$800 | $600–$800 |
+| Manheim Houston / Texas | $700–$900 | $700–$900 |
+| Manheim Atlanta | $900–$1,100 | $900–$1,100 |
+
+Nevada is the primary source lane for client vehicles. Zero transport cost makes
+Nevada buys significantly more competitive in drive-out comparisons.
 
 ---
 
